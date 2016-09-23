@@ -90,6 +90,52 @@ public class Parser {
     }
 
     /**
+     * Parses user input into command for auto-suggestion of command format.
+     *
+     * @param userInput full user input string
+     * @return the format for the command based on the user input
+     */
+    public String parseCommandForSuggestion(String userInput) {
+        final Matcher matcher = BASIC_COMMAND_FORMAT.matcher(userInput.trim());
+        if (!matcher.matches()) {
+            return "";
+        }
+        final String commandWord = matcher.group("commandWord");
+        switch (commandWord) {
+
+            case AddCommand.COMMAND_WORD:
+                return AddCommand.COMMAND_FORMAT;
+
+            case DeleteCommand.COMMAND_WORD:
+                return DeleteCommand.COMMAND_FORMAT;
+
+            case ClearCommand.COMMAND_WORD:
+                return ClearCommand.COMMAND_FORMAT;
+
+            case FindCommand.COMMAND_WORD:
+                return FindCommand.COMMAND_FORMAT;
+
+            case ListCommand.COMMAND_WORD:
+                return ListCommand.COMMAND_FORMAT;
+
+            case ViewCommand.COMMAND_WORD:
+                return ViewCommand.COMMAND_FORMAT;
+
+            case ViewAllCommand.COMMAND_WORD:
+                return ViewAllCommand.COMMAND_FORMAT;
+
+            case ExitCommand.COMMAND_WORD:
+                return ExitCommand.COMMAND_FORMAT;
+
+            case HelpCommand.COMMAND_WORD:
+                return HelpCommand.COMMAND_FORMAT;
+                
+            default:
+                return "";
+        }
+    }
+    
+    /**
      * Parses arguments in the context of the add person command.
      *
      * @param args full command args string

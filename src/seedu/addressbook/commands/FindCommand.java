@@ -19,6 +19,8 @@ public class FindCommand extends Command {
 
     private final Set<String> keywords;
 
+    public static final String COMMAND_FORMAT = "find KEYWORD [MORE_KEYWORDS]...";
+    
     public FindCommand(Set<String> keywords) {
         this.keywords = keywords;
     }
@@ -29,7 +31,7 @@ public class FindCommand extends Command {
     public Set<String> getKeywords() {
         return new HashSet<>(keywords);
     }
-
+    
     @Override
     public CommandResult execute() {
         final List<ReadOnlyPerson> personsFound = getPersonsWithNameContainingAnyKeyword(keywords);

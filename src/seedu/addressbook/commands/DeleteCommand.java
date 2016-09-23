@@ -19,11 +19,11 @@ public class DeleteCommand extends Command {
 
     public static final String MESSAGE_DELETE_PERSON_SUCCESS = "Deleted Person: %1$s";
 
-
+    public static final String COMMAND_FORMAT = "delete INDEX";
+    
     public DeleteCommand(int targetVisibleIndex) {
         super(targetVisibleIndex);
     }
-
 
     @Override
     public CommandResult execute() {
@@ -38,5 +38,5 @@ public class DeleteCommand extends Command {
             return new CommandResult(Messages.MESSAGE_PERSON_NOT_IN_ADDRESSBOOK);
         }
     }
-
+    
 }

@@ -26,6 +26,8 @@ public class AddCommand extends Command {
 
     private final Person toAdd;
 
+    public final static String COMMAND_FORMAT = "add NAME [p]p/PHONE [p]e/EMAIL [p]a/ADDRESS  [t/TAG]...";
+    
     /**
      * Convenience constructor using raw values.
      *
@@ -56,7 +58,7 @@ public class AddCommand extends Command {
     public ReadOnlyPerson getPerson() {
         return toAdd;
     }
-
+    
     @Override
     public CommandResult execute() {
         try {
