@@ -61,4 +61,8 @@ public class Name {
         return fullName.hashCode();
     }
 
+    public List<String> getWordsInNameCaseNotSensitive() {
+        return Arrays.asList(fullName.toLowerCase().split("\\s+"));
+    }
+
 }
