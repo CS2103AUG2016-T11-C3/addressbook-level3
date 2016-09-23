@@ -5,8 +5,10 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 import seedu.addressbook.commands.ExitCommand;
 import seedu.addressbook.logic.Logic;
+import seedu.addressbook.parser.Parser;
 import seedu.addressbook.commands.CommandResult;
 import seedu.addressbook.data.person.ReadOnlyPerson;
 
@@ -35,11 +37,10 @@ public class MainWindow {
     }
 
     @FXML
-    private TextArea outputConsole;
+    private TextArea outputConsole, autoSuggestBox;
 
     @FXML
     private TextField commandInput;
-
 
     @FXML
     void onCommand(ActionEvent event) {
@@ -56,6 +57,21 @@ public class MainWindow {
             display(e.getMessage());
             throw new RuntimeException(e);
         }
+    }
+
+    @FXML
+    void onChange(KeyEvent event) {
+        if (event.getCharacter().matches(" ") && !commandInput.getText().isEmpty() && !autoSuggestBox.isVisible()){
+            String userCommandText = commandInput.getText();
+            String suggestText = new Parser().parseCommandForSuggestion(userCommandText);
+            if (!suggestText.isEmpty()) {
+                displaySuggestion("Format: " + suggestText);
+            }
+        }
+        else if (commandInput.getText().isEmpty()){
+            clearAutoSuggestBox();
+        }
+            
     }
 
     private void exitApp() throws Exception {
@@ -77,6 +93,12 @@ public class MainWindow {
         outputConsole.clear();
     }
 
+    /** Clears the output display area */
+    public void clearAutoSuggestBox(){
+        autoSuggestBox.clear();
+        autoSuggestBox.setVisible(false);
+    }
+    
     /** Displays the result of a command execution to the user. */
     public void displayResult(CommandResult result) {
         clearOutputConsole();
@@ -107,4 +129,11 @@ public class MainWindow {
         outputConsole.setText(outputConsole.getText() + new Formatter().format(messages));
     }
 
+    /**
+     * Displays the given messages on the output display area, after formatting appropriately.
+     */
+    private void displaySuggestion(String... messages) {
+        autoSuggestBox.setText(new Formatter().format(messages).trim());
+        autoSuggestBox.setVisible(true);
+    }
 }

@@ -21,6 +21,8 @@ public class HelpCommand extends Command {
             + "\n" + HelpCommand.MESSAGE_USAGE
             + "\n" + ExitCommand.MESSAGE_USAGE;
 
+    public static final String COMMAND_FORMAT = "help";
+    
     public HelpCommand() {}
 
     @Override

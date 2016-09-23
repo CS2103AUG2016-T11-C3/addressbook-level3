@@ -19,11 +19,11 @@ public class ViewAllCommand extends Command {
 
     public static final String MESSAGE_VIEW_PERSON_DETAILS = "Viewing person: %1$s";
 
+    public static final String COMMAND_FORMAT = "viewall INDEX";
 
     public ViewAllCommand(int targetVisibleIndex) {
         super(targetVisibleIndex);
     }
-
 
     @Override
     public CommandResult execute() {

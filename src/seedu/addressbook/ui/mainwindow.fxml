@@ -2,18 +2,25 @@
 
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox stylesheets="@/seedu/addressbook/ui/DarkTheme.css" alignment="center" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="seedu.addressbook.ui.MainWindow">
+<VBox alignment="center" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="seedu.addressbook.ui.MainWindow">
 
     <children>
 
-        <TextField fx:id="commandInput" onAction="#onCommand" VBox.vgrow="NEVER">
+        <TextField fx:id="commandInput" alignment="TOP_LEFT" onAction="#onCommand" onKeyTyped="#onChange" stylesheets="@/seedu/addressbook/ui/DarkTheme.css" VBox.vgrow="NEVER">
         </TextField>
-
-        <TextArea fx:id="outputConsole" editable="false" wrapText="true" VBox.vgrow="ALWAYS">
+      <StackPane VBox.vgrow="ALWAYS">
+         <children>
+              
+              <TextArea fx:id="outputConsole" editable="false" stylesheets="@/seedu/addressbook/ui/DarkTheme.css" wrapText="true" StackPane.alignment="TOP_LEFT">
         </TextArea>
+            	
+            	<TextArea fx:id="autoSuggestBox" editable="false" maxHeight="-Infinity" prefRowCount="1" stylesheets="@DarkThemePopUp.css" visible="false" wrapText="true" StackPane.alignment="TOP_LEFT">
+		</TextArea>
+         </children>
+      </StackPane>
 
     </children>
 
