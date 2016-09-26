@@ -145,6 +145,14 @@ public class AddressBook {
         return new UniqueTagList(allTags);
     }
 
+    /**
+     * Defensively copied UniquePersonList of all persons in the address book at the time of the call.
+     */
+    public UniquePersonList sortPersons() {
+        Collections.sort((List<Person>) allPersons.getInternalList());
+        return new UniquePersonList(allPersons);
+    }
+
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object

@@ -71,7 +71,7 @@ public class MainWindow {
         else if (commandInput.getText().isEmpty()){
             clearAutoSuggestBox();
         }
-            
+
     }
 
     private void exitApp() throws Exception {
@@ -98,7 +98,7 @@ public class MainWindow {
         autoSuggestBox.clear();
         autoSuggestBox.setVisible(false);
     }
-    
+
     /** Displays the result of a command execution to the user. */
     public void displayResult(CommandResult result) {
         clearOutputConsole();
