@@ -133,6 +133,9 @@ public class Parser {
             case HelpCommand.COMMAND_WORD:
                 return HelpCommand.COMMAND_FORMAT;
 
+            case SortCommand.COMMAND_WORD:
+                return SortCommand.COMMAND_FORMAT;
+                
             default:
                 return "";
         }
